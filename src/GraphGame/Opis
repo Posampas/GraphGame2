@@ -1,0 +1,39 @@
+Tym razem zrobię trochę inaczej. Skupię się powrotem znowu na grafie. Graf będzie główną częścią tego projektu.
+Mam skłonność żeby rozpraszać się nad oprawą wizalną a zapominać o silniku który to wszsytko dzwignie.
+
+W klasie game będzie tablica wszytkich wierzchołków w tej wersji nie będzie dodawania nowych wierzchołków wiec
+nie będzie problemu z powiekszaniem i kopiowaniem tabeli.
+Powinno być adjacency matrix żeby opisać połączenia jakie mają miejsce w grafie gry. Może ta tabela powinna być
+wiecej niż dwu wymiarowa
+
+Baza musi być opisana poprzez następujące warości:
+- 1. Shape
+- 2. Owner
+- 3. Population
+- 4. degree
+- 5. PopGrowth
+- 6. Label
+
+Shape to koło albo kwadrat o kolorze zależnym od właściela.
+Owner to typ playerA, albo playerB.
+Populacja to liczba całkowita opisujące ile jest ludzi w bazie.
+Degree jest to stopień bazy jeżli jest to -1 to znaczy że z bazy wychodzi jedea więż.
+Jeżeli baza ma stopień 4 to znaczy że dochodzą do niej 4 więzy. Degree wpływa na
+wkaźnik popGrowth.
+PopGrowth - populacja każdej bazy która ma swojego właścianie będzie roznąć o określoną
+liczę
+
+Label - liczba dzięki której baza będzie mogła być odnależnova adjacency matrix.
+
+Klasa game będzie pozawalałą na łączenie poszczególnych baz więzami.
+Więzy powinny miec przynależność do gracza.
+Jeżeli do węzła gracza A poprowadzony jest węzeł graca B to znaczy
+że dana baza jest pod atakiem i odwrotnie.
+Jeżeli z bazy A poprowadzony jest węzeł do węzła gracza A to znaczy
+że z bazy pierwszej idą posiłki do bazy drugiej.
+
+
+Stan startowy
+- Na początku bazy rozrzucane są w losowych miejscach na ekranie.
+- Po jednej znich przypisanych jest do każdego gracza
+
