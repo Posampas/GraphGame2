@@ -10,17 +10,23 @@ public class Base {
     private Label populationLablel;
     private int index;
     private int population;
-    private int degree;
     private int popGrowth;
+    private Color baseColor;
+    private Player owner;
 
     public Base(int index, double x, double y) {
         this.index = index;
         popGrowth = 1;
-        degree = 0;
         population = 10;
         baseShape = new Circle(x, y, 15, Color.GRAY);
         populationLablel = new Label("" + population);
+        owner = null;
 
+    }
+
+    public void setOwner(Player owner) {
+        this.owner = owner;
+        setColor(owner.getColor());
     }
 
     public Circle getBaseShape() {
@@ -40,22 +46,37 @@ public class Base {
         return Mathematics.calculateDistance(getXCoordinates(), getYCoordinates(), x, y) < 15;
     }
 
-    int getIndex(){
+    int getIndex() {
         return index;
     }
 
-    void decrementDegree(){
-        degree--;
-    }
-    void  incrementDegree(){
-        degree++;
-    }
-    Label getPopulationLablel(){
+
+    Label getPopulationLablel() {
         return populationLablel;
     }
 
-    void updatePopulationCount(){
-        population = population +  popGrowth + degree;
+    void updatePopulationCount(int popChange) {
+
+        population += popChange;
+        if (population < 0) population = 0;
         populationLablel.setText("" + population);
+
+    }
+
+    public void setColor(Color color) {
+        baseShape.setFill(color);
+
+    }
+
+    public Player getOwner() {
+        return owner;
+    }
+
+    int getPopulation() {
+        return population;
+    }
+
+    public String toString() {
+        return " Base " + index + " " + owner;
     }
 }

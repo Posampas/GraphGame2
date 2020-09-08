@@ -20,7 +20,7 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem fx:id="conectBasesMenuItem" mnemonicParsing="false" onAction="#test" text="Delete" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

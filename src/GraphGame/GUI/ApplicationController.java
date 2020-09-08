@@ -4,6 +4,7 @@ import GraphGame.Model.Base;
 import GraphGame.Model.Game;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -16,6 +17,11 @@ public class ApplicationController {
 
     @FXML
     MenuItem conectBasesMenuItem;
+
+    @FXML
+    public void test(){
+        System.out.println(game.toString());
+    }
 
     @FXML
     Pane pane;
@@ -62,6 +68,7 @@ public class ApplicationController {
         game = new Game(pane);
         game.inintialize(10);
 
+
     }
 
 
@@ -73,6 +80,7 @@ public class ApplicationController {
 
         if (baseFirst == null){
             baseFirst = game.loopThroghBasesAndFindClickedOne(x,y);
+//            System.out.println(baseFirst.getOwner() != null ? baseFirst.getOwner(): "Neutral");
         }   else {
             if (baseSecond == null ){
                 baseSecond = game.loopThroghBasesAndFindClickedOne(x,y);
@@ -83,6 +91,7 @@ public class ApplicationController {
         if(baseSecond != null && baseFirst != null){
             if (baseSecond.equals(baseFirst)){
                 baseSecond = null;
+
             } else {
                 game.connectBases(baseFirst,baseSecond);
                 baseFirst = null;
@@ -106,7 +115,13 @@ public class ApplicationController {
     }
 
     public void step() {
-        game.step();
+        if (game.isGameStilOn()) {
+            game.step();
+        } else {
+            Label winnerLabel = new Label("Winner is " + game.getWinner());
+            pane.getChildren().add(winnerLabel);
+
+        }
     }
 
 
