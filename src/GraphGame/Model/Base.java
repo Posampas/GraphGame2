@@ -58,7 +58,7 @@ public class Base {
     void updatePopulationCount(int popChange) {
 
         population += popChange;
-        if (population < 0) population = 0;
+        if (population < 0) population = -1;
         populationLablel.setText("" + population);
 
     }

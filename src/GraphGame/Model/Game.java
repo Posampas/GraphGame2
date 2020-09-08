@@ -214,21 +214,8 @@ public class Game {
     }
 
     public void artificialIntelligence() {
-        if (bases.length > playerB.getNumberOfBases()) {
-            for (Base b : playerB.getBases()) {
-                if (b.getPopulation() > 12) {
-                    int count = 1;
-                    for (Base base : bases) {
-                        connectBases(b, base);
-                        if (count == 0) {
-                            break;
-                        }
-                        count--;
 
-                    }
-                }
-            }
-        }
+        
     }
 
 }

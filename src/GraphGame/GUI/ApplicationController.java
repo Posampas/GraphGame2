@@ -15,18 +15,29 @@ public class ApplicationController {
     private ProgamState state;
     private Game game;
 
+
+    @FXML
+    MenuItem newGameButton;
+
+    @FXML
+    public void newGameButtonMenuFuction(){
+        newGame();
+    }
+
+
     @FXML
     MenuItem conectBasesMenuItem;
 
     @FXML
-    public void test(){
+    public void test() {
         System.out.println(game.toString());
     }
 
     @FXML
     Pane pane;
     Movement timer;
-//    private Game game;
+
+    //    private Game game;
     private class Movement extends AnimationTimer {
         private long FRAMES_PER_SECOND = 1L;
 
@@ -52,6 +63,7 @@ public class ApplicationController {
         public int getTick() {
             return tick;
         }
+
         public void resetTick() {
             tick = 0;
         }
@@ -59,41 +71,43 @@ public class ApplicationController {
     }
 
 
-
     @FXML
     public void initialize() {
-        state = ProgamState.SIMULATION;
         timer = new Movement();
-        timer.start();
-        game = new Game(pane);
-        game.inintialize(10);
-
+        newGame();
 
     }
 
 
+    public void newGame() {
+        pane.getChildren().clear();
+        state = ProgamState.SIMULATION;
+        timer.start();
+        game = new Game(pane);
+        game.inintialize(10);
+    }
 
     @FXML
     public void getClick(MouseEvent event) {
         double x = event.getX();
         double y = event.getY();
 
-        if (baseFirst == null){
-            baseFirst = game.loopThroghBasesAndFindClickedOne(x,y);
+        if (baseFirst == null) {
+            baseFirst = game.loopThroghBasesAndFindClickedOne(x, y);
 //            System.out.println(baseFirst.getOwner() != null ? baseFirst.getOwner(): "Neutral");
-        }   else {
-            if (baseSecond == null ){
-                baseSecond = game.loopThroghBasesAndFindClickedOne(x,y);
+        } else {
+            if (baseSecond == null) {
+                baseSecond = game.loopThroghBasesAndFindClickedOne(x, y);
 
             }
         }
 
-        if(baseSecond != null && baseFirst != null){
-            if (baseSecond.equals(baseFirst)){
+        if (baseSecond != null && baseFirst != null) {
+            if (baseSecond.equals(baseFirst)) {
                 baseSecond = null;
 
             } else {
-                game.connectBases(baseFirst,baseSecond);
+                game.connectBases(baseFirst, baseSecond);
                 baseFirst = null;
                 baseSecond = null;
             }
@@ -101,13 +115,12 @@ public class ApplicationController {
         }
 
 
-
     }
 
     Base baseFirst = null;
     Base baseSecond = null;
 
-    public void mouseDragged(MouseEvent event){
+    public void mouseDragged(MouseEvent event) {
         double x = event.getX();
         double y = event.getY();
 
@@ -123,8 +136,6 @@ public class ApplicationController {
 
         }
     }
-
-
 
 
 }
